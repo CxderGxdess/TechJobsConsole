@@ -38,6 +38,22 @@ namespace TechJobsConsole
             return values;
         }
 
+        public static List<Dictionary<string, string>> FindByValue(string search)
+        {
+            LoadData();
+
+            List<Dictionary<string, string>> results = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                string aValue = row[search];
+
+                results.Add(row);
+            }
+
+            return results;
+        }
+
         public static List<Dictionary<string, string>> FindByColumnAndValue(string column, string value)
         {
             // load data, if not already loaded
@@ -50,7 +66,7 @@ namespace TechJobsConsole
                 string aValue = row[column];
 
                 if (aValue.Contains(value))
-                {
+                { 
                     jobs.Add(row);
                 }
             }
